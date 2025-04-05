@@ -1,31 +1,72 @@
 import React from "react";
-import { BallCanvas } from "./canvas"; // Ensure BallCanvas is correctly exported
-import { SectionWrapper } from "../hoc"; // Ensure SectionWrapper exists
+import Tilt from "react-parallax-tilt";
+import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
 import { textVariant } from "../utils/motion";
 import { motion } from "framer-motion";
-import { styles } from "../styles"; // Ensure styles exists
+import { styles } from "../styles";
 
 const Tech = () => {
   return (
     <>
-      {/* Animated Section Heading - Centered */}
+      {/* Section Title */}
       <motion.div variants={textVariant()} className="text-center">
-        <p className={`${styles.sectionSubText} text-lg uppercase tracking-wider bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent`}>Familiar with</p>
-        <h2 className={`${styles.sectionHeadText}`}>Tools</h2>
+        <p
+          className={`${styles.sectionSubText} text-sm sm:text-lg uppercase tracking-wider bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent`}
+        >
+          Familiar with
+        </p>
+        <h2 className={`${styles.sectionHeadText} text-xl sm:text-2xl md:text-3xl`}>
+          Tools
+        </h2>
       </motion.div>
 
-      {/* Technology Icons Section */}
-      <div className="flex flex-row flex-wrap justify-center gap-4 mt-6">
-        {technologies.map((technology) => (
-          <div key={technology.name} style={{ height: "5rem", width: "5rem" }}>
-            <BallCanvas icon={technology.icon} />
-          </div>
-        ))}
+      {/* Scrolling Container */}
+      <div className="overflow-hidden mt-10">
+        <div className="scrolling-wrapper flex w-max hover:paused">
+          {technologies.concat(technologies).map((tech, index) => (
+            <Tilt
+              key={`${tech.name}-${index}`}
+              glareEnable={true}
+              glareMaxOpacity={0.25}
+              scale={1.05}
+              transitionSpeed={400}
+              tiltMaxAngleX={15}
+              tiltMaxAngleY={15}
+              className="mx-4"
+            >
+              <img
+                src={tech.icon}
+                alt={tech.name}
+                title={tech.name}
+                className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-lg shadow-lg hover:scale-110 transition-transform duration-300"
+              />
+            </Tilt>
+          ))}
+        </div>
       </div>
+
+      {/* Custom Styles Inside Same File */}
+      <style jsx="true">{`
+        @keyframes scrollX {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .scrolling-wrapper {
+          animation: scrollX 25s linear infinite;
+        }
+
+        .scrolling-wrapper:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </>
   );
 };
 
-// If SectionWrapper is an HOC, use it. Otherwise, export Tech normally.
-export default SectionWrapper ? SectionWrapper(Tech, "tech") : Tech;
+export default SectionWrapper(Tech, "tech");

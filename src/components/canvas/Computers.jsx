@@ -1,8 +1,14 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF, Html, useProgress } from "@react-three/drei";
+import {
+  OrbitControls,
+  Preload,
+  useGLTF,
+  Html,
+  useProgress,
+} from "@react-three/drei";
 
-
+// Loader while the model is loading
 function Loader() {
   const { progress } = useProgress();
   return (
@@ -12,36 +18,47 @@ function Loader() {
   );
 }
 
+// 3D model setup
 const Computers = ({ isMobile }) => {
   const computer = useGLTF("/desktop_pc/scene.gltf");
 
   return (
     <mesh>
-      <hemisphereLight intensity={0.35} groundColor="black" />
+      <ambientLight intensity={0.8} />
+      <hemisphereLight intensity={0.5} groundColor="black" />
+      <directionalLight
+        position={[10, 10, 5]}
+        intensity={1.5}
+        castShadow
+        shadow-mapSize-width={2048}
+        shadow-mapSize-height={2048}
+      />
       <spotLight
         position={[-20, 50, 10]}
         angle={0.3}
         penumbra={1}
-        intensity={2}
+        intensity={3}
         castShadow
         shadow-mapSize={2048}
       />
-      <pointLight intensity={2} />
+      <pointLight intensity={2.5} />
+
       <primitive
         object={computer.scene}
-        scale={isMobile ? 0.7 : 0.75}
-        position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
+        scale={isMobile ? 0.65 : 0.85} // smaller on mobile
+        position={isMobile ? [0, -3, -2] : [0, -3.2, -1.5]}
         rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
   );
 };
 
+// Canvas wrapper
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 500px)");
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
     setIsMobile(mediaQuery.matches);
 
     const handleMediaQueryChange = (event) => {
@@ -55,12 +72,23 @@ const ComputersCanvas = () => {
   }, []);
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+    <div
+      style={{
+        width: isMobile ? "90vw" : "50vw",
+        height: isMobile ? "45vh" : "60vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        margin: "0 auto",
+        marginTop: isMobile ? "1rem" : "2rem",
+        marginBottom: isMobile ? "1rem" : "2rem",
+      }}
+    >
       <Canvas
         frameloop="demand"
         shadows
         dpr={[1, 2]}
-        camera={{ position: [20, 3, 5], fov: 25 }}
+        camera={{ position: [10, 2, 5], fov: 30 }}
         gl={{ preserveDrawingBuffer: true }}
       >
         <Suspense fallback={<Loader />}>

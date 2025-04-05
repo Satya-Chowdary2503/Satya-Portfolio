@@ -7,6 +7,18 @@ import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
+// Missing files added
+import apssdc from "./apssdc.png";
+import aws from "./aws.svg";
+import blackbuckslogo from "./blackbuckslogo1.png";
+import code from "./code.jpg";
+import codegnan from "./codegnan.png";
+import googleTile from "./google-tile.webp";
+import google from "./google.svg";
+import herobg from "./herobg.png";
+import satya from "./Satya.jpg";
+
+// Tech imports
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
 import figma from "./tech/figma.png";
@@ -20,11 +32,13 @@ import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 
+// Company imports
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 
+// Project imports
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
@@ -38,6 +52,15 @@ export {
   github,
   menu,
   close,
+  apssdc,
+  aws,
+  blackbuckslogo,
+  code,
+  codegnan,
+  googleTile,
+  google,
+  herobg,
+  satya,
   css,
   docker,
   figma,

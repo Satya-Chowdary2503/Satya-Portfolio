@@ -2,69 +2,79 @@ import React from "react";
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import { motion } from "framer-motion";
 import "react-vertical-timeline-component/style.min.css";
-import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { textVariant, fadeIn, staggerContainer } from "../utils/motion";
+
+// Animation Variants
+const fadeIn = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.3,
+      type: "spring",
+      stiffness: 60,
+    },
+  }),
+};
 
 const ExperienceCard = ({ experience, index }) => (
   <VerticalTimelineElement
     contentStyle={{
       background: "linear-gradient(145deg, #1d1836 0%, #0a0615 100%)",
       color: "#fff",
-      borderRadius: "12px",
-      boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+      borderRadius: "16px",
+      boxShadow: "0 12px 30px rgba(0,0,0,0.4)",
       border: "1px solid rgba(255,255,255,0.1)",
+      padding: "20px 25px",
     }}
-    contentArrowStyle={{ 
-      borderRight: "7px solid rgba(136, 96, 208, 0.5)",
-      filter: "drop-shadow(0 0 5px rgba(136, 96, 208, 0.3))"
+    contentArrowStyle={{
+      borderRight: "7px solid rgba(136, 96, 208, 0.6)",
+      filter: "drop-shadow(0 0 6px rgba(136, 96, 208, 0.5))",
     }}
-    date={experience.date}
-    dateClassName="text-white/80 font-medium"
-    iconStyle={{ 
+    date={
+      <span style={{ padding: "2px 10px", background: "#262040", borderRadius: "6px", fontSize: "14px" }}>
+        {experience.date}
+      </span>
+    }
+    iconStyle={{
       background: experience.iconBg,
-      boxShadow: "0 0 15px rgba(136, 96, 208, 0.4)"
+      boxShadow: "0 0 15px rgba(136, 96, 208, 0.4)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
     }}
     icon={
-      <motion.div 
-        className="flex justify-center items-center w-full h-full"
-        whileHover={{ scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 300 }}
-      >
-        <img 
-          src={experience.icon} 
-          alt={experience.company_name} 
-          className="w-[55%] h-[55%] object-contain" 
-          loading="lazy"
-        />
-      </motion.div>
+      <img
+        src={experience.icon}
+        alt={experience.company_name}
+        className="w-[60%] h-[60%] object-contain"
+        loading="lazy"
+      />
     }
   >
     <motion.div
-      variants={fadeIn("up", "spring", index * 0.2, 0.75)}
+      custom={index}
+      variants={fadeIn}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
     >
-      <h3 className="text-white text-[24px] font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+      <h3 className="text-white text-xl sm:text-2xl font-bold leading-snug">
         {experience.title}
       </h3>
-      <p className="text-gray-300 text-[18px] font-semibold mt-1">
-        @ {experience.company_name}
+      <p className="text-purple-300 text-sm sm:text-base font-semibold mt-1">
+        @{experience.company_name}
       </p>
-      
-      <ul className="mt-6 space-y-3">
+      <ul className="mt-4 space-y-2">
         {experience.points?.map((point, idx) => (
-          <motion.li 
+          <li
             key={idx}
-            className="text-gray-400 text-[15px] pl-3 leading-7 relative before:content-['▹'] before:absolute before:left-0 before:text-purple-400 before:font-bold"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: idx * 0.1 }}
+            className="text-gray-300 text-sm sm:text-[15px] pl-5 leading-6 relative before:content-['▹'] before:absolute before:left-0 before:text-purple-400 before:font-bold transition-all hover:translate-x-1"
           >
             {point}
-          </motion.li>
+          </li>
         ))}
       </ul>
     </motion.div>
@@ -73,48 +83,48 @@ const ExperienceCard = ({ experience, index }) => (
 
 const Experience = () => {
   return (
-    <motion.div
-      variants={staggerContainer()}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
-      className="relative z-10"
+    <motion.section
+      className="relative z-10 px-4 sm:px-6 md:px-12 py-12 md:py-20"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      viewport={{ once: true }}
     >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 -z-10 opacity-15">
-        <div className="absolute inset-0 bg-gradient-radial from-purple-900/30 to-transparent" />
+      {/* Header Section */}
+      <div className="text-center">
+        <motion.p
+          className="text-sm sm:text-lg uppercase tracking-wider text-purple-300"
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Professional Journey
+        </motion.p>
+        <motion.h2
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-2"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+        >
+          Work Experience
+        </motion.h2>
       </div>
 
-      <motion.div variants={textVariant()} className="text-center">
-        <p className={`${styles.sectionSubText} text-lg uppercase tracking-wider bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent`}>
-          Professional Journey
-        </p>
-        <h2 className={`${styles.sectionHeadText} text-5xl font-extrabold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent mt-2`}>
-          Work Experience
-        </h2>
-      </motion.div>
-
-      <div className="mt-16">
+      {/* Timeline */}
+      <div className="mt-12 sm:mt-16 max-w-4xl mx-auto">
         <VerticalTimeline lineColor="rgba(136, 96, 208, 0.2)">
           {experiences?.length > 0 ? (
             experiences.map((experience, index) => (
-              <ExperienceCard 
-                key={index} 
-                experience={experience} 
-                index={index} 
-              />
+              <ExperienceCard key={index} experience={experience} index={index} />
             ))
           ) : (
-            <motion.p 
-              className="text-center text-gray-400 text-xl"
-              variants={fadeIn("up", "spring", 0.5, 1)}
-            >
+            <p className="text-center text-gray-400 text-lg sm:text-xl mt-10">
               Currently writing the next chapter...
-            </motion.p>
+            </p>
           )}
         </VerticalTimeline>
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

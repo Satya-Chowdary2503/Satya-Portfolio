@@ -1,16 +1,14 @@
-import React, { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";  // Canvas comes from fiber
+import React, { Suspense, useState, useEffect } from "react";
+import { Canvas } from "@react-three/fiber";  
 import { OrbitControls, Preload, useGLTF, Html } from "@react-three/drei";
 
-
-const Earth = () => {
-  const earth = useGLTF("./planet/scene.gltf"); // Leading slash means "public" folder
-
+const Earth = ({ isMobile }) => {
+  const earth = useGLTF("/planet/scene.gltf"); // Adjusted path
 
   return (
     <primitive 
       object={earth.scene} 
-      scale={2.5} 
+      scale={isMobile ? 1.8 : 2.5} 
       position={[0, 0, 0]} 
       rotation={[0, 0, 0]}
     />
@@ -18,10 +16,20 @@ const Earth = () => {
 };
 
 const EarthCanvas = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 600);
+    
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <Canvas
       shadows
-      frameloop='demand'
+      frameloop="demand"
       dpr={[1, 2]}
       gl={{ preserveDrawingBuffer: true }}
       camera={{
@@ -38,11 +46,12 @@ const EarthCanvas = () => {
       }>
         <OrbitControls
           autoRotate
+          autoRotateSpeed={0.5}  // Reduced speed for better control
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
-        <Earth />
+        <Earth isMobile={isMobile} />
         <Preload all />
       </Suspense>
     </Canvas>

@@ -1,6 +1,15 @@
 import { BrowserRouter } from "react-router-dom";
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
+import { useEffect } from "react";
+import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas, Education } from "./components";
+
 const App = () => {
+  useEffect(() => {
+    const lastRole = localStorage.getItem("lastRole");
+    if (lastRole) {
+      console.log("Restoring last role:", lastRole);
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="relative z-0 bg-primary">
@@ -9,6 +18,7 @@ const App = () => {
           <Hero />
         </div>
         <About />
+        <Education />
         <Experience />
         <Tech />
         <Works />

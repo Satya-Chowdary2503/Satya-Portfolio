@@ -1,6 +1,18 @@
 import { BrowserRouter } from "react-router-dom";
 import { useEffect } from "react";
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas, Education } from "./components";
+import {
+  About,
+  Contact,
+  Experience,
+  Feedbacks,
+  Hero,
+  Navbar,
+  Tech,
+  Works,
+  StarsCanvas,
+  Education,
+} from "./components";
+import Footer from "./components/Footer"; // Make sure the path is correct
 
 const App = () => {
   useEffect(() => {
@@ -26,6 +38,7 @@ const App = () => {
         <div className="relative z-0">
           <Contact />
           <StarsCanvas />
+          <Footer />
         </div>
       </div>
     </BrowserRouter>

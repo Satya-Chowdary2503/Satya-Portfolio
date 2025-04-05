@@ -1,8 +1,37 @@
 // Importing all necessary assets from the 'assets' folder
-import { 
-  mobile, backend, creator, web, javascript, typescript, html, css, reactjs, redux, tailwind, 
-  mongodb, git, figma, docker, meta, starbucks, tesla, shopify, carrent, jobit, tripguide, 
-  threejs 
+import {
+  mobile,
+  backend,
+  creator,
+  web,
+  javascript,
+  typescript,
+  html,
+  css,
+  reactjs,
+  redux,
+  tailwind,
+  mongodb,
+  git,
+  figma,
+  docker,
+  meta,
+  starbucks,
+  tesla,
+  shopify,
+  carrent,
+  jobit,
+  tripguide,
+  threejs,
+  google,
+  aws,
+  blackbuckslogo as blackbucks, // aliasing for consistency
+  codegnan,
+  apssdc,
+  diet,
+  aanm,
+  nalanda,
+  code,
 } from "../assets";
 
 // Navigation links for the menu
@@ -12,7 +41,7 @@ export const navLinks = [
   { id: "contact", title: "Contact" },
 ];
 
-// Services list with different titles and their corresponding icons
+// Services list
 const services = [
   { title: "Web Developer", icon: web },
   { title: "React Native Developer", icon: mobile },
@@ -20,7 +49,7 @@ const services = [
   { title: "Content Creator", icon: creator },
 ];
 
-// Technologies used with corresponding icons
+// Technologies used
 const technologies = [
   { name: "HTML 5", icon: html },
   { name: "CSS 3", icon: css },
@@ -39,48 +68,63 @@ const technologies = [
 // Experience data
 const experiences = [
   {
-      title: "Google AI-ML Virtual Internship",
-      company_name: "Google",
-      date: "Jan 2024 - Mar 2024",
-      icon: "/src/assets/google.svg",
-      iconBg: "#FFFFFF",
-      points: ["Worked on AI-ML projects", "Gained hands-on experience in deep learning models"],
+    title: "Google AI-ML Virtual Internship",
+    company_name: "Google",
+    date: "Jan 2024 - Mar 2024",
+    icon: google,
+    iconBg: "#FFFFFF",
+    points: [
+      "Worked on AI-ML projects",
+      "Gained hands-on experience in deep learning models",
+    ],
   },
   {
-      title: "AI-ML Virtual Internship",
-      company_name: "AWS Academy",
-      date: "Sep 2023 - Nov 2023",
-      icon: "/src/assets/aws.svg",
-      iconBg: "#FFFFFF",
-      points: ["Developed AI models using AWS cloud services", "Worked on machine learning foundations"],
+    title: "AI-ML Virtual Internship",
+    company_name: "AWS Academy",
+    date: "Sep 2023 - Nov 2023",
+    icon: aws,
+    iconBg: "#FFFFFF",
+    points: [
+      "Developed AI models using AWS cloud services",
+      "Worked on machine learning foundations",
+    ],
   },
   {
-      title: "Deep Learning Model for Cats & Dogs Classification",
-      company_name: "Blackbucks-IIDT",
-      date: "Jan 2024 - Apr 2024",
-      icon: "/src/assets/blackbuckslogo1.png",
-      iconBg: "#FFFFFF",
-      points: ["Built a CNN model for image classification", "Used Python, TensorFlow, and Keras"],
+    title: "Deep Learning Model for Cats & Dogs Classification",
+    company_name: "Blackbucks-IIDT",
+    date: "Jan 2024 - Apr 2024",
+    icon: blackbucks,
+    iconBg: "#FFFFFF",
+    points: [
+      "Built a CNN model for image classification",
+      "Used Python, TensorFlow, and Keras",
+    ],
   },
   {
-      title: "Used Car Price Prediction",
-      company_name: "CodeGnan IT Solutions",
-      date: "May 2023 - Jul 2023",
-      icon: "/src/assets/codegnan.png",
-      iconBg: "#FFFFFF",
-      points: ["Designed predictive analytics pipelines", "Utilized machine learning techniques"],
+    title: "Used Car Price Prediction",
+    company_name: "CodeGnan IT Solutions",
+    date: "May 2023 - Jul 2023",
+    icon: codegnan,
+    iconBg: "#FFFFFF",
+    points: [
+      "Designed predictive analytics pipelines",
+      "Utilized machine learning techniques",
+    ],
   },
   {
-      title: "Hotel Website Development",
-      company_name: "APSSDC",
-      date: "Jul 2020 - Jan 2021",
-      icon: "/src/assets/apssdc.png",
-      iconBg: "#FFFFFF",
-      points: ["Created a dynamic website using Django", "Deployed on AWS for scalability"],
+    title: "Hotel Website Development",
+    company_name: "APSSDC",
+    date: "Jul 2020 - Jan 2021",
+    icon: apssdc,
+    iconBg: "#FFFFFF",
+    points: [
+      "Created a dynamic website using Django",
+      "Deployed on AWS for scalability",
+    ],
   },
 ];
 
-// Testimonials section with quotes from users or clients
+// Testimonials section
 const testimonials = [
   {
     testimonial:
@@ -116,68 +160,93 @@ const testimonials = [
   },
 ];
 
-
 // Education background data
 const educations = [
   {
     degree: "Bachelor of Computer Science",
-    name: "Dhanekula Institute of Engineering", // Changed from 'institution' to 'name'
-    year: "2021-2024", // Changed from 'years' to 'year'
-    marks: "7.75/10 CGPA", // Changed from 'cgpa' to 'marks'
-    image: "/src/assets/diet.png" // You need an image field, or set a default image
+    name: "Dhanekula Institute of Engineering",
+    year: "2021-2024",
+    marks: "7.75/10 CGPA",
+    image: diet,
   },
   {
     degree: "Diploma in Computer Science",
     name: "A.A.N.M & V.V.R.S.R Polytechnic",
     year: "2018-2021",
     marks: "8.4/10 CGPA",
-    image: "/src/assets/aanm.png"
+    image: aanm,
   },
   {
     degree: "10th Grade CBSE",
     name: "Nalanda Vidya Niketan",
     year: "2017-2018",
-    marks: "55%", // Changed from 'percentage' to 'marks'
-    image: "/src/assets/nalanda.png"
+    marks: "55%",
+    image: nalanda,
   },
 ];
 
-
-// Information for various projects
+// Projects Information
 const projectsInfo = [
   {
-      name: "Auto Caption Generation using Python",
-      description: "NLP-based text summarization and image captioning using VGG16 and LSTM, leveraging deep learning techniques to generate automatic captions for images and summarize textual content.",
-      organization: "BEL (Dec 2024 - May 2024)",
-      image: "/src/assets/code.jpg",
-      source_code_link: "https://github.com/",
-      tags: [{ name: "Python", color: "text-blue-500" }, { name: "TensorFlow", color: "text-orange-500" }, { name: "Deep Learning", color: "text-red-500" }]
+    name: "Auto Caption Generation using Python",
+    description:
+      "NLP-based text summarization and image captioning using VGG16 and LSTM, leveraging deep learning techniques to generate automatic captions for images and summarize textual content.",
+    organization: "BEL (Dec 2024 - May 2024)",
+    image: code,
+    source_code_link: "https://github.com/",
+    tags: [
+      { name: "Python", color: "text-blue-500" },
+      { name: "TensorFlow", color: "text-orange-500" },
+      { name: "Deep Learning", color: "text-red-500" },
+    ],
   },
   {
-      name: "Deep Learning Model for Classifying Cats and Dogs using Python",
-      description: "Built a CNN model to classify images of cats and dogs using Python, TensorFlow, and Keras.",
-      organization: "Blackbucks-IIDT (Jan 2024 - Apr 2024)",
-      image: "/src/assets/code.jpg",
-      source_code_link: "https://github.com/",
-      tags: [{ name: "Python", color: "text-blue-500" }, { name: "TensorFlow", color: "text-orange-500" }, { name: "Keras", color: "text-pink-500" }]
+    name: "Deep Learning Model for Classifying Cats and Dogs using Python",
+    description:
+      "Built a CNN model to classify images of cats and dogs using Python, TensorFlow, and Keras.",
+    organization: "Blackbucks-IIDT (Jan 2024 - Apr 2024)",
+    image: code,
+    source_code_link: "https://github.com/",
+    tags: [
+      { name: "Python", color: "text-blue-500" },
+      { name: "TensorFlow", color: "text-orange-500" },
+      { name: "Keras", color: "text-pink-500" },
+    ],
   },
   {
-      name: "Used Car Price Prediction using Machine Learning",
-      description: "Designed machine learning pipelines for predictive analytics, analyzing historical vehicle data to predict resale values.",
-      organization: "CodeGnan IT Solutions (May 2023 - Jul 2023)",
-      image: "/src/assets/code.jpg",
-      source_code_link: "https://github.com/",
-      tags: [{ name: "Machine Learning", color: "text-green-500" }, { name: "Python", color: "text-blue-500" }, { name: "Pandas", color: "text-yellow-500" }]
+    name: "Used Car Price Prediction using Machine Learning",
+    description:
+      "Designed machine learning pipelines for predictive analytics, analyzing historical vehicle data to predict resale values.",
+    organization: "CodeGnan IT Solutions (May 2023 - Jul 2023)",
+    image: code,
+    source_code_link: "https://github.com/",
+    tags: [
+      { name: "Machine Learning", color: "text-green-500" },
+      { name: "Python", color: "text-blue-500" },
+      { name: "Pandas", color: "text-yellow-500" },
+    ],
   },
   {
-      name: "Hotel Website Development using Django",
-      description: "Created a dynamic, responsive website using Django and deployed it on AWS.",
-      organization: "APSSDC (Jul 2020 - Jan 2021)",
-      image: "/src/assets/code.jpg",
-      source_code_link: "https://github.com",
-      tags: [{ name: "Django", color: "text-green-500" }, { name: "AWS", color: "text-purple-500" }, { name: "Web Development", color: "text-indigo-500" }]
-  }
+    name: "Hotel Website Development using Django",
+    description:
+      "Created a dynamic, responsive website using Django and deployed it on AWS.",
+    organization: "APSSDC (Jul 2020 - Jan 2021)",
+    image: code,
+    source_code_link: "https://github.com",
+    tags: [
+      { name: "Django", color: "text-green-500" },
+      { name: "AWS", color: "text-purple-500" },
+      { name: "Web Development", color: "text-indigo-500" },
+    ],
+  },
 ];
 
-// Exporting all constants so they can be imported and used in other parts of the project
-export { services, technologies, experiences, testimonials, educations, projectsInfo };
+// Export all constants
+export {
+  services,
+  technologies,
+  experiences,
+  testimonials,
+  educations,
+  projectsInfo,
+};

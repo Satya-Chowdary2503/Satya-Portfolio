@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 import { useEffect, useState } from "react";
-import yourPhoto from '../assets/photo.png';
+import yourPhoto from '../assets/9999.png';
 import yourPho from '../assets/9999.jpg';
 
 const useMediaQueryHook = (query) => {

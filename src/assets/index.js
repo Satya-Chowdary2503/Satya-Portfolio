@@ -1,3 +1,4 @@
+// Main assets
 import logo from "./logo.svg";
 import backend from "./backend.png";
 import creator from "./creator.png";
@@ -7,7 +8,7 @@ import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
-// Missing files added
+// Additional images
 import apssdc from "./apssdc.png";
 import aws from "./aws.svg";
 import blackbuckslogo from "./blackbuckslogo1.png";
@@ -17,8 +18,15 @@ import googleTile from "./google-tile.webp";
 import google from "./google.svg";
 import herobg from "./herobg.png";
 import satya from "./Satya.jpg";
+import carrent from "./carrent.png";
+import jobit from "./jobit.png";
+import tripguide from "./tripguide.png";
+import aanm from "./aanm.jpg";
+import photo from "./photo.png";
+import nalanda from "./nalanda.png";
+import diet from "./diet.png";
 
-// Tech imports
+// Tech stack
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
 import figma from "./tech/figma.png";
@@ -32,17 +40,13 @@ import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 
-// Company imports
+// Company logos
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 
-// Project imports
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
-
+// Export all
 export {
   logo,
   backend,
@@ -61,6 +65,15 @@ export {
   google,
   herobg,
   satya,
+  carrent,
+  jobit,
+  tripguide,
+  aanm,
+  aanmJpg,
+  img9999,
+  photo,
+  nalanda,
+  diet,
   css,
   docker,
   figma,
@@ -77,7 +90,4 @@ export {
   shopify,
   starbucks,
   tesla,
-  carrent,
-  jobit,
-  tripguide,
 };
